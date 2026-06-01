@@ -39,12 +39,18 @@
         <section class="content-section">
             <h2>Nächste Schritte</h2>
 
-            <div class="info-card">
+           <div class="info-card">
                 <p>
-                    Als nächstes erstellen wir eine Projektverwaltung,
-                    damit Projekte direkt im Admin-Bereich erstellt,
-                    bearbeitet und gelöscht werden können.
+                    Hier können Inhalte des Mini Agency CMS verwaltet werden.
                 </p>
+
+                <a href="{{ path('app_admin_projects') }}" class="button-link">
+                    Projekte verwalten
+                </a>
+
+                <a href="{{ path('app_admin_messages') }}" class="button-link">
+                    Kontaktanfragen ansehen
+                </a>
             </div>
         </section>
     </main>

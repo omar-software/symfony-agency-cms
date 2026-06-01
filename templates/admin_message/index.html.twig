@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kontaktanfragen{% endblock %}
+
+{% block body %}
+    {# Diese Seite zeigt alle Kontaktanfragen im Admin-Bereich #}
+
+    <main class="page-wrapper">
+        <section class="admin-header">
+            <div>
+                <h1>Kontaktanfragen</h1>
+                <p>Hier werden Nachrichten aus dem Kontaktformular angezeigt.</p>
+            </div>
+
+            <div>
+                <a href="{{ path('app_admin') }}" class="button-link">Dashboard</a>
+                <a href="{{ path('app_logout') }}" class="button-link">Logout</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Alle Nachrichten</h2>
+
+            {% if messages is not empty %}
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Nachricht</th>
+                                <th>Status</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for message in messages %}
+                                <tr>
+                                    <td>{{ message.name }}</td>
+                                    <td>{{ message.email }}</td>
+                                    <td>{{ message.message }}</td>
+
+                                    <td>
+                                        {% if message.isRead %}
+                                            Gelesen
+                                        {% else %}
+                                            Neu
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {{ message.createdAt|date('d.m.Y H:i') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="info-card">
+                    <p>Es sind noch keine Kontaktanfragen vorhanden.</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

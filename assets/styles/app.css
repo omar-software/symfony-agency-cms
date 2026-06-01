@@ -1,3 +1,85 @@
+/* Allgemeine Grundeinstellungen für die ganze Webseite */
 body {
-    background-color: skyblue;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+/* Einfache Begrenzung für den Seiteninhalt */
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Großer Startbereich auf der Homepage */
+.hero-section {
+    background-color: white;
+    padding: 60px 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.hero-section h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+/* Einfacher Button-Link */
+.button-link {
+    display: inline-block;
+    background-color: #222;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* Bereich unter dem Hero */
+.content-section {
+    margin-top: 50px;
+}
+
+.content-section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Karten nebeneinander */
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* Einzelne Karte */
+.info-card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h3 {
+    margin-top: 0;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 768px) {
+    .card-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section h1 {
+        font-size: 32px;
+    }
 }

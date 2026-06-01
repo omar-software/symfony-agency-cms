@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ pageTitle }}{% endblock %}
+
+{% block body %}
+    {# Hier beginnt die öffentliche Startseite der Agentur #}
+
+    <main class="page-wrapper">
+        <section class="hero-section">
+            <h1>Mini Agency CMS</h1>
+
+            <p>
+                Ein kleines Symfony-Webprojekt für eine Internetagentur.
+                Kunden, Projekte und CMS-Inhalte können später im Admin-Bereich verwaltet werden.
+            </p>
+
+            <a href="#leistungen" class="button-link">Unsere Leistungen</a>
+        </section>
+
+        <section id="leistungen" class="content-section">
+            <h2>Leistungen</h2>
+
+            <div class="card-list">
+                <div class="info-card">
+                    <h3>Webentwicklung</h3>
+                    <p>Moderne Webseiten mit Symfony, PHP, HTML, CSS und JavaScript.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>CMS</h3>
+                    <p>Verwaltung von Seiten, Projekten und Kontaktanfragen.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Open Source</h3>
+                    <p>Das Projekt nutzt Symfony und zeigt Interesse an Open-Source-Technologien.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

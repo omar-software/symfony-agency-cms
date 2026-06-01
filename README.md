@@ -1,4 +1,75 @@
-﻿## Datenbank-Tabellen
+﻿# Mini Agency CMS – Symfony Webprojekt
+
+Ein kleines CMS-Webprojekt für eine Internetagentur.  
+Das Projekt wurde mit Symfony, PHP, Twig und MySQL umgesetzt und zeigt typische Funktionen einer Agentur-Webseite mit geschütztem Admin-Bereich.
+
+## Ziel des Projekts
+
+Das Projekt dient als praxisnahes Symfony-Webprojekt für die Verwaltung von Referenzprojekten und Kontaktanfragen.  
+Es zeigt grundlegende Backend- und Frontend-Funktionen, wie sie in Webprojekten einer Internetagentur vorkommen können.
+
+## Features
+
+- Öffentliche Startseite mit Leistungen, Referenzen und Kontaktformular
+- Dynamische Referenzprojekte aus der MySQL-Datenbank
+- Kontaktformular mit Speicherung der Nachrichten in MySQL
+- Geschützter Admin-Login mit Symfony Security
+- Datenbankbasierte Benutzerverwaltung
+- Passwort-Hashing für Admin-Benutzer
+- Admin-Dashboard mit Projekt- und Nachrichtenstatistiken
+- CRUD-Funktionen für Projekte
+- Verwaltung von Kontaktanfragen im Admin-Bereich
+- Nachrichtenstatus: neu / gelesen
+- Responsive Grundstruktur mit HTML und CSS
+
+## Technologien
+
+- PHP
+- Symfony 7
+- Twig
+- Doctrine ORM
+- MySQL / MariaDB
+- HTML
+- CSS
+- Composer
+- Symfony CLI
+- Git / GitHub
+- XAMPP für lokale Entwicklung
+
+## Projektstruktur
+
+```text
+src/
+  Controller/
+    HomeController.php
+    AdminController.php
+    AdminProjectController.php
+    AdminMessageController.php
+    SecurityController.php
+
+  Entity/
+    Project.php
+    ContactMessage.php
+    User.php
+
+  Repository/
+    ProjectRepository.php
+    ContactMessageRepository.php
+    UserRepository.php
+
+templates/
+  home/
+  admin/
+  admin_project/
+  admin_message/
+  security/
+
+assets/
+  styles/
+    app.css
+```
+
+## Datenbank-Tabellen
 
 Das Projekt verwendet unter anderem folgende Tabellen:
 

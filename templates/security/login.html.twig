@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block body %}
+    {# Einfache Login-Seite für den Admin-Bereich #}
+
+    <main class="page-wrapper">
+        <section class="login-box">
+            <h1>Admin Login</h1>
+
+            {# Wenn ein Login-Fehler vorhanden ist, zeigen wir ihn hier an #}
+            {% if error %}
+                <div class="alert-error">
+                    Login fehlgeschlagen. Bitte E-Mail und Passwort prüfen.
+                </div>
+            {% endif %}
+
+            {# Wenn der Benutzer schon angemeldet ist, zeigen wir seine E-Mail an #}
+            {% if app.user %}
+                <div class="alert-info">
+                    Du bist angemeldet als {{ app.user.userIdentifier }}.
+                    <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="inputEmail">E-Mail</label>
+                    <input
+                        type="email"
+                        value="{{ last_username }}"
+                        name="email"
+                        id="inputEmail"
+                        class="form-control"
+                        autocomplete="email"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword">Passwort</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="inputPassword"
+                        class="form-control"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <input
+                    type="hidden"
+                    name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="button-link login-button" type="submit">
+                    Einloggen
+                </button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

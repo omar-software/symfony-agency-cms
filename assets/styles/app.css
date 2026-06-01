@@ -83,3 +83,66 @@ body {
         font-size: 32px;
     }
 }
+
+/* Login-Box für den Admin-Bereich */
+.login-box {
+    max-width: 420px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.login-box h1 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Formular-Gruppen für Label und Eingabe */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Eingabefelder */
+.form-control {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* Login-Button nimmt die ganze Breite */
+.login-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Fehlermeldung beim Login */
+.alert-error {
+    background-color: #ffe5e5;
+    border: 1px solid #ffb3b3;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+/* Info-Meldung wenn Benutzer angemeldet ist */
+.alert-info {
+    background-color: #e8f1ff;
+    border: 1px solid #b8d4ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}

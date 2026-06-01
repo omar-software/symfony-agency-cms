@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projektverwaltung{% endblock %}
+
+{% block body %}
+    {# Diese Seite zeigt alle Projekte im Admin-Bereich #}
+
+    <main class="page-wrapper">
+        <section class="admin-header">
+            <div>
+                <h1>Projektverwaltung</h1>
+                <p>Hier werden alle Referenzprojekte verwaltet.</p>
+            </div>
+
+            <div>
+                <a href="{{ path('app_admin') }}" class="button-link">Dashboard</a>
+                <a href="{{ path('app_logout') }}" class="button-link">Logout</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Alle Projekte</h2>
+
+            {% if projects is not empty %}
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Titel</th>
+                                <th>Technologien</th>
+                                <th>Status</th>
+                                <th>Erstellt am</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for project in projects %}
+                                <tr>
+                                    <td>{{ project.title }}</td>
+                                    <td>{{ project.technology }}</td>
+
+                                    <td>
+                                        {% if project.isPublished %}
+                                            Veröffentlicht
+                                        {% else %}
+                                            Entwurf
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {{ project.createdAt|date('d.m.Y H:i') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="info-card">
+                    <p>Es sind noch keine Projekte vorhanden.</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

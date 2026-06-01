@@ -181,3 +181,36 @@ body {
         align-items: flex-start;
     }
 }
+
+/* Wrapper für Tabellen im Admin-Bereich */
+.table-wrapper {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* Einfache Admin-Tabelle */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Tabellenzellen */
+.admin-table th,
+.admin-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* Tabellenkopf */
+.admin-table th {
+    background-color: #f4f6f8;
+    font-weight: bold;
+}
+
+/* Letzte Zeile ohne Rahmen */
+.admin-table tr:last-child td {
+    border-bottom: none;
+}

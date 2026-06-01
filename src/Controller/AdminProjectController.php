@@ -68,4 +68,35 @@ class AdminProjectController extends AbstractController
         // Wenn es kein POST ist, zeigen wir nur das Formular
         return $this->render('admin_project/new.html.twig');
     }
+
+    // Diese Route zeigt das Formular zum Bearbeiten eines Projekts
+#[Route('/admin/projects/{id}/edit', name: 'app_admin_project_edit')]
+public function edit(Project $project, Request $request, EntityManagerInterface $entityManager): Response
+{
+    // Hier schützen wir die Seite zusätzlich für Admin-Benutzer
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+    // Wenn das Formular abgeschickt wurde, aktualisieren wir das Projekt
+    if ($request->isMethod('POST')) {
+        // Hier lesen wir die neuen Formularwerte aus
+        $project->setTitle($request->request->get('title'));
+        $project->setDescription($request->request->get('description'));
+        $project->setTechnology($request->request->get('technology'));
+
+        // Checkbox: Wenn sie angeklickt ist, kommt ein Wert zurück
+        $isPublished = $request->request->get('isPublished') ? true : false;
+        $project->setIsPublished($isPublished);
+
+        // Hier speichern wir die Änderungen in der Datenbank
+        $entityManager->flush();
+
+        // Danach gehen wir zurück zur Projektliste
+        return $this->redirectToRoute('app_admin_projects');
+    }
+
+    // Wenn es kein POST ist, zeigen wir das Formular mit den aktuellen Daten
+    return $this->render('admin_project/edit.html.twig', [
+        'project' => $project,
+    ]);
+}
 }

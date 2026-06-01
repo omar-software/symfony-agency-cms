@@ -243,3 +243,14 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
+/* Kleiner Link für Tabellen-Aktionen */
+.small-link {
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.small-link:hover {
+    text-decoration: underline;
+}

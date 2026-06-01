@@ -31,6 +31,7 @@
                                 <th>Technologien</th>
                                 <th>Status</th>
                                 <th>Erstellt am</th>
+                                <th>Aktionen</th>
                             </tr>
                         </thead>
 
@@ -50,6 +51,15 @@
 
                                     <td>
                                         {{ project.createdAt|date('d.m.Y H:i') }}
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="{{ path('app_admin_project_edit', { id: project.id }) }}"
+                                            class="small-link"
+                                        >
+                                            Bearbeiten
+                                        </a>
                                     </td>
                                 </tr>
                             {% endfor %}

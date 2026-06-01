@@ -146,3 +146,38 @@ body {
     border-radius: 8px;
     margin-bottom: 18px;
 }
+
+/* Kopfbereich im Admin-Dashboard */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.admin-header h1 {
+    margin: 0 0 8px 0;
+}
+
+.admin-header p {
+    margin: 0;
+}
+
+/* Große Zahl im Dashboard */
+.dashboard-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+}
+
+/* Mobile Ansicht für Admin-Kopfbereich */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+    }
+}

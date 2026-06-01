@@ -99,4 +99,30 @@ public function edit(Project $project, Request $request, EntityManagerInterface 
         'project' => $project,
     ]);
 }
+
+// Diese Route löscht ein Projekt aus der Datenbank
+#[Route('/admin/projects/{id}/delete', name: 'app_admin_project_delete')]
+public function delete(
+    int $id,
+    ProjectRepository $projectRepository,
+    EntityManagerInterface $entityManager
+): Response {
+    // Hier schützen wir die Seite zusätzlich für Admin-Benutzer
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+    // Hier suchen wir das Projekt über die ID
+    $project = $projectRepository->find($id);
+
+    // Wenn das Projekt nicht mehr existiert, gehen wir zurück zur Liste
+    if (!$project) {
+        return $this->redirectToRoute('app_admin_projects');
+    }
+
+    // Hier löschen wir das Projekt aus der Datenbank
+    $entityManager->remove($project);
+    $entityManager->flush();
+
+    // Danach gehen wir zurück zur Projektliste
+    return $this->redirectToRoute('app_admin_projects');
+}
 }

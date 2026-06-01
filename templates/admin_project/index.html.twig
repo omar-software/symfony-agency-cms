@@ -60,6 +60,16 @@
                                         >
                                             Bearbeiten
                                         </a>
+
+                                        |
+
+                                        <a
+                                            href="{{ path('app_admin_project_delete', { id: project.id }) }}"
+                                            class="small-link danger-link"
+                                            onclick="return confirm('Projekt wirklich löschen?');"
+                                        >
+                                            Löschen
+                                        </a>
                                     </td>
                                 </tr>
                             {% endfor %}

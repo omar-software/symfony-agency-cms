@@ -254,3 +254,8 @@ body {
 .small-link:hover {
     text-decoration: underline;
 }
+
+/* Roter Link für Löschen-Aktion */
+.danger-link {
+    color: #b00020;
+}

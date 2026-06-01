@@ -31,6 +31,7 @@
                                 <th>Nachricht</th>
                                 <th>Status</th>
                                 <th>Datum</th>
+                                <th>Aktionen</th>
                             </tr>
                         </thead>
 
@@ -52,6 +53,18 @@
                                     <td>
                                         {{ message.createdAt|date('d.m.Y H:i') }}
                                     </td>
+<td>
+    {% if not message.isRead %}
+        <a
+            href="{{ path('app_admin_message_read', { id: message.id }) }}"
+            class="small-link"
+        >
+            Als gelesen markieren
+        </a>
+    {% else %}
+        -
+    {% endif %}
+</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

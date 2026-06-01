@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Neues Projekt{% endblock %}
+
+{% block body %}
+    {# Formular zum Erstellen eines neuen Projekts #}
+
+    <main class="page-wrapper">
+        <section class="admin-header">
+            <div>
+                <h1>Neues Projekt</h1>
+                <p>Hier kann ein neues Referenzprojekt erstellt werden.</p>
+            </div>
+
+            <a href="{{ path('app_admin_projects') }}" class="button-link">Zurück</a>
+        </section>
+
+        <section class="content-section">
+            <form method="post" class="admin-form">
+                <div class="form-group">
+                    <label for="title">Titel</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Beschreibung</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        class="form-control"
+                        rows="5"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="technology">Technologien</label>
+                    <input
+                        type="text"
+                        id="technology"
+                        name="technology"
+                        class="form-control"
+                        placeholder="z.B. Symfony, Twig, MySQL"
+                        required
+                    >
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" name="isPublished" value="1" checked>
+                        Projekt veröffentlichen
+                    </label>
+                </div>
+
+                <button type="submit" class="button-link form-button">
+                    Projekt speichern
+                </button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

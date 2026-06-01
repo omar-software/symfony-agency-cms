@@ -214,3 +214,32 @@ body {
 .admin-table tr:last-child td {
     border-bottom: none;
 }
+
+/* Formular im Admin-Bereich */
+.admin-form {
+    max-width: 700px;
+    background-color: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* Textarea soll wie normale Inputs aussehen */
+.admin-form textarea {
+    resize: vertical;
+}
+
+/* Checkbox etwas einfacher ausrichten */
+.checkbox-group label {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: normal;
+}
+
+/* Button im Formular */
+.form-button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}

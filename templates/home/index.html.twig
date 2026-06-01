@@ -1,50 +1,121 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin Dashboard{% endblock %}
+{% block title %}{{ pageTitle }}{% endblock %}
 
 {% block body %}
-    {# Einfaches Dashboard für den geschützten Admin-Bereich #}
+    {# Öffentliche Startseite des Mini Agency CMS #}
 
     <main class="page-wrapper">
-        <section class="admin-header">
-            <div>
-                <h1>Admin Dashboard</h1>
-                <p>Willkommen im geschützten Bereich des Mini Agency CMS.</p>
-            </div>
+        <section class="hero-section">
+            <h1>Mini Agency CMS</h1>
 
-            <a href="{{ path('app_logout') }}" class="button-link">Logout</a>
+            <p>
+                Ein kleines Symfony-Webprojekt für eine Internetagentur.
+                Kunden, Projekte und Kontaktanfragen werden mit Symfony und MySQL verwaltet.
+            </p>
+
+            <a href="#kontakt" class="button-link">Kontakt aufnehmen</a>
         </section>
 
-        <section class="content-section">
-            <h2>Übersicht</h2>
+        <section id="leistungen" class="content-section">
+            <h2>Leistungen</h2>
 
             <div class="card-list">
                 <div class="info-card">
-                    <h3>Projekte gesamt</h3>
-                    <p class="dashboard-number">{{ projectCount }}</p>
+                    <h3>Webentwicklung</h3>
+                    <p>Moderne Webseiten mit Symfony, PHP, HTML, CSS und JavaScript.</p>
                 </div>
 
                 <div class="info-card">
-                    <h3>Veröffentlichte Projekte</h3>
-                    <p class="dashboard-number">{{ publishedProjectCount }}</p>
+                    <h3>CMS</h3>
+                    <p>Verwaltung von Seiten, Projekten und Kontaktanfragen.</p>
                 </div>
 
                 <div class="info-card">
-                    <h3>Angemeldet als</h3>
-                    <p>{{ app.user.userIdentifier }}</p>
+                    <h3>Open Source</h3>
+                    <p>Das Projekt nutzt Symfony und zeigt Interesse an Open-Source-Technologien.</p>
                 </div>
             </div>
         </section>
 
-        <section class="content-section">
-            <h2>Nächste Schritte</h2>
+        <section id="projekte" class="content-section">
+            <h2>Referenzen</h2>
+
+            {% if projects is not empty %}
+                <div class="card-list">
+                    {% for project in projects %}
+                        <div class="info-card">
+                            <h3>{{ project.title }}</h3>
+
+                            <p>{{ project.description }}</p>
+
+                            <p>
+                                <strong>Technologien:</strong>
+                                {{ project.technology }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="info-card">
+                    <p>Es sind noch keine Projekte vorhanden.</p>
+                </div>
+            {% endif %}
+        </section>
+
+        <section id="kontakt" class="content-section">
+            <h2>Kontakt</h2>
 
             <div class="info-card">
                 <p>
-                    Als nächstes erstellen wir eine Projektverwaltung,
-                    damit Projekte direkt im Admin-Bereich erstellt,
-                    bearbeitet und gelöscht werden können.
+                    Haben Sie Fragen zu einem Webprojekt?
+                    Schreiben Sie uns eine kurze Nachricht.
                 </p>
+
+                {% if messageSaved %}
+                    <div class="alert-info">
+                        Vielen Dank! Ihre Nachricht wurde gespeichert.
+                    </div>
+                {% endif %}
+
+                <form method="post" action="{{ path('app_home') }}" class="admin-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            class="form-control"
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="button-link form-button">
+                        Nachricht senden
+                    </button>
+                </form>
             </div>
         </section>
     </main>
